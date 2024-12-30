@@ -63,14 +63,14 @@ loader.load(
 
         
         //Animação LocY
-        let clipeLocY = THREE.AnimationClip.findByName( gltf.animations, 'LocY' )
+        let clipeLocY = THREE.AnimationClip.findByName( gltf.animations, 'ArmToAbajurMidToBottom' )
         acaoLocY = misturador.clipAction( clipeLocY )
         acaoLocY.play()
         misturador.update( relogio.getDelta() )
 
 
         //Animação LocZ
-        let clipeLocZ = THREE.AnimationClip.findByName( gltf.animations, 'LocZ' )
+        let clipeLocZ = THREE.AnimationClip.findByName( gltf.animations, 'ArmToAbajurBottomToMid' )
         acaoLocZ = misturador.clipAction( clipeLocZ )
         acaoLocZ.play()
         misturador.update( relogio.getDelta() )
@@ -81,6 +81,8 @@ loader.load(
         acaoRotZ = misturador.clipAction( clipeRotZ )
         acaoRotZ.play()
         misturador.update( relogio.getDelta() )
+
+
 // Apply rotation
     }
 
