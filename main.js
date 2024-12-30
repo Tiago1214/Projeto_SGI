@@ -4,8 +4,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
 //Variaveis
-let largura_Canvas = 400;
-let altura_Canvas = 150;
+let largura_Canvas = 800;
+let altura_Canvas = 400;
 
 let isPaused = false;
 
@@ -19,16 +19,17 @@ renderer.setSize(largura_Canvas, altura_Canvas);
 renderer.shadowMap.enabled = true;
 
 //camera na posição inicial (6,4,7)
-let camera = new THREE.PerspectiveCamera(70, largura_Canvas/altura_Canvas, 0.1, 1000);
+let camera = new THREE.PerspectiveCamera(75, largura_Canvas/altura_Canvas, 0.1, 800);
 camera.lookAt(0,0,0);
-camera.position.set(6,4,7);
+camera.position.set(10,5,10);
 
 // Orbits
 new OrbitControls(camera, renderer.domElement) 
 
 //Auxilaires visuais
-let grelha = new THREE.GridHelper();
-cena.add(grelha);
+//let grelha = new THREE.GridHelper();
+
+//cena.add(grelha);
 
 
 //Animações do gltf
@@ -37,6 +38,9 @@ let misturador = new THREE.AnimationMixer(cena)
 let acaoLocY
 let acaoLocZ
 let acaoRotZ
+
+
+
 
 
 
@@ -77,7 +81,7 @@ loader.load(
         acaoRotZ = misturador.clipAction( clipeRotZ )
         acaoRotZ.play()
         misturador.update( relogio.getDelta() )
-
+// Apply rotation
     }
 
 
@@ -85,10 +89,12 @@ loader.load(
 
 //ILUMINAÇÃO
 //ponto de luz
-const luzPonto = new THREE.PointLight( "white", 30 );
+const luzPonto = new THREE.PointLight( "white", 100 );
 luzPonto.position.set( 5, 3, 5);
 luzPonto.castShadow = true;
 cena.add( luzPonto ) 
+cena.background = new THREE.Color(0xffffff); 
+
 
 const pointLightHelper = new THREE.PointLightHelper( luzPonto, 0.2 );
 cena.add( pointLightHelper );
