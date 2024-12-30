@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Projeto SGI</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <defs>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="link" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M12 19a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0-4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm-5 0a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm7-12h-1V2a1 1 0 0 0-2 0v1H8V2a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3Zm1 17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9h16Zm0-11H4V6a1 1 0 0 1 1-1h1v1a1 1 0 0 0 2 0V5h8v1a1 1 0 0 0 2 0V5h1a1 1 0 0 1 1 1ZM7 15a1 1 0 1 0-1-1a1 1 0 0 0 1 1Zm0 4a1 1 0 1 0-1-1a1 1 0 0 0 1 1Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="category" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 5.5h-6.28l-.32-1a3 3 0 0 0-2.84-2H5a3 3 0 0 0-3 3v13a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-13a1 1 0 0 1 1-1h4.56a1 1 0 0 1 .95.68l.54 1.64a1 1 0 0 0 .95.68h7a1 1 0 0 1 1 1Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="calendar" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="heart" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M20.16 4.61A6.27 6.27 0 0 0 12 4a6.27 6.27 0 0 0-8.16 9.48l7.45 7.45a1 1 0 0 0 1.42 0l7.45-7.45a6.27 6.27 0 0 0 0-8.87Zm-1.41 7.46L12 18.81l-6.75-6.74a4.28 4.28 0 0 1 3-7.3a4.25 4.25 0 0 1 3 1.25a1 1 0 0 0 1.42 0a4.27 4.27 0 0 1 6 6.05Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="plus" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 11h-6V5a1 1 0 0 0-2 0v6H5a1 1 0 0 0 0 2h6v6a1 1 0 0 0 2 0v-6h6a1 1 0 0 0 0-2Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="minus" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 11H5a1 1 0 0 0 0 2h14a1 1 0 0 0 0-2Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="cart" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M8.5 19a1.5 1.5 0 1 0 1.5 1.5A1.5 1.5 0 0 0 8.5 19ZM19 16H7a1 1 0 0 1 0-2h8.491a3.013 3.013 0 0 0 2.885-2.176l1.585-5.55A1 1 0 0 0 19 5H6.74a3.007 3.007 0 0 0-2.82-2H3a1 1 0 0 0 0 2h.921a1.005 1.005 0 0 1 .962.725l.155.545v.005l1.641 5.742A3 3 0 0 0 7 18h12a1 1 0 0 0 0-2Zm-1.326-9l-1.22 4.274a1.005 1.005 0 0 1-.963.726H8.754l-.255-.892L7.326 7ZM16.5 19a1.5 1.5 0 1 0 1.5 1.5a1.5 1.5 0 0 0-1.5-1.5Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="check" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M18.71 7.21a1 1 0 0 0-1.42 0l-7.45 7.46l-3.13-3.14A1 1 0 1 0 5.29 13l3.84 3.84a1 1 0 0 0 1.42 0l8.16-8.16a1 1 0 0 0 0-1.47Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="trash" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M10 18a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1ZM20 6h-4V5a3 3 0 0 0-3-3h-2a3 3 0 0 0-3 3v1H4a1 1 0 0 0 0 2h1v11a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8h1a1 1 0 0 0 0-2ZM10 5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1h-4Zm7 14a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V8h10Zm-3-1a1 1 0 0 0 1-1v-6a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-outline" viewBox="0 0 15 15">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M7.5 9.804L5.337 11l.413-2.533L4 6.674l2.418-.37L7.5 4l1.082 2.304l2.418.37l-1.75 1.793L9.663 11L7.5 9.804Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="star-solid" viewBox="0 0 15 15">
+          <path fill="currentColor" d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="search" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z"/>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" id="close" viewBox="0 0 15 15">
+          <path fill="currentColor" d="M7.953 3.788a.5.5 0 0 0-.906 0L6.08 5.85l-2.154.33a.5.5 0 0 0-.283.843l1.574 1.613l-.373 2.284a.5.5 0 0 0 .736.518l1.92-1.063l1.921 1.063a.5.5 0 0 0 .736-.519l-.373-2.283l1.574-1.613a.5.5 0 0 0-.283-.844L8.921 5.85l-.968-2.062Z"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div class="preloader-wrapper">
+      <div class="preloader">
+      </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+      <div class="offcanvas-header justify-content-center">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill">3</span>
+          </h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Mesa de madeira</h6>
+                <small class="text-body-secondary">Mesa de madeira pequena, compacta e elegante, ideal para espaços reduzidos com um toque rústico.</small>
+              </div>
+              <span class="text-body-secondary">438.99€</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Candeeiro de Cristais</h6>
+                <small class="text-body-secondary">Candeeiro de cristais sofisticado, com pendentes brilhantes que refletem a luz de forma elegante, adicionando luxo e charme ao ambiente.</small>
+              </div>
+              <span class="text-body-secondary">86.99€</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div>
+                <h6 class="my-0">Candeeiro de Mesa</h6>
+                <small class="text-body-secondary">Candeeiro de mesa compacto e elegante, perfeito para iluminação suave e decoração de ambientes aconchegantes.</small>
+              </div>
+              <span class="text-body-secondary">15.99€</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (EUR)</span>
+              <strong>541,97€</strong>
+            </li>
+          </ul>
+  
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasSearch" aria-labelledby="Search">
+      <div class="offcanvas-header justify-content-center">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Encontre o que precise</span>
+          </h4>
+          <form role="search" action="index.html" method="get" class="d-flex mt-3 gap-0">
+            <input class="form-control rounded-start rounded-0 bg-light" type="email" placeholder="O que deseja?" aria-label="What are you looking for?">
+            <button class="btn btn-dark rounded-end rounded-0" type="submit">Procurar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <header style="background-color: lightsteelblue;">
+      <div class="container-fluid">
+        <div class="row py-3 border-bottom">
+          
+          <div class="col-sm-4 col-lg-1 text-center text-sm-start">
+            <div class="main-logo">
+              <a href="index.html">
+                <svg width="64" height="64" class="header__logoLinkSvg" viewBox="0 0 130 130" fill="currentColor" preserveAspectRatio="xMinYMin meet"><path d="M127.987 45.232v60.021c0 6.558-5.527 11.877-12.244 11.693-6.484-.18-11.56-5.582-11.56-11.957V45.232c0-.957.791-1.738 1.769-1.738h4.834c.977 0 1.768.777 1.768 1.738v59.883c0 1.796 1.484 3.492 3.312 3.605 2.054.125 3.763-1.479 3.763-3.467V45.232c0-.957.791-1.738 1.768-1.738h4.834c.978 0 1.769.777 1.769 1.738h-.013ZM21.037 87.355H1.768C.79 87.355 0 88.132 0 89.093v4.788c0 .957.79 1.734 1.769 1.734h5.535v30.647c0 .961.79 1.738 1.769 1.738h4.668c.973 0 1.768-.777 1.768-1.738V95.615h5.536c.973 0 1.769-.777 1.769-1.738v-4.788c0-.96-.791-1.738-1.77-1.738l-.008.004Zm80.893-23.37c0 11.56-9.57 20.96-21.33 20.96h-.28c-11.76 0-21.33-9.404-21.33-20.96 0-11.555 9.57-20.96 21.33-20.96h.28c11.764 0 21.33 9.405 21.33 20.96Zm-8.214 0c0-7.102-5.884-12.888-13.116-12.888h-.29c-7.227 0-13.11 5.782-13.11 12.888 0 7.107 5.88 12.884 13.11 12.884h.29c7.228 0 13.116-5.777 13.116-12.884Zm32.503 55.789h-20.272c-.977 0-1.768.777-1.768 1.738v4.75c0 .961.791 1.738 1.768 1.738h20.272c.977 0 1.768-.777 1.768-1.738v-4.75c0-.961-.791-1.738-1.768-1.738ZM1.769 40.62h9.625c.974 0 1.769-.777 1.769-1.738v-4.75c0-.957-.791-1.738-1.769-1.738H8.367V1.738C8.367.777 7.577 0 6.598 0h-4.83C.792 0 0 .777 0 1.738v37.148c0 .957.79 1.738 1.769 1.738v-.004ZM112.546 8.222h13.673c.977 0 1.768-.777 1.768-1.738V1.738c0-.961-.791-1.738-1.768-1.738h-20.272c-.977 0-1.768.777-1.768 1.738v37.148c0 .957.791 1.738 1.768 1.738h20.272c.977 0 1.768-.777 1.768-1.738v-4.75c0-.957-.791-1.738-1.768-1.738h-13.673V24.43h13.018c.978 0 1.769-.777 1.769-1.738v-4.75c0-.957-.791-1.738-1.769-1.738h-13.018V8.222ZM15.514 38.41 26.959 1.257A1.798 1.798 0 0 1 28.685 0h6.084a1.76 1.76 0 0 1 1.67 1.17L49.51 38.3c.404 1.149-.464 2.348-1.705 2.348H42.74a1.765 1.765 0 0 1-1.67-1.17l-1.765-5.013a1.798 1.798 0 0 0-1.705-1.19H27.167c-.795 0-1.496.509-1.726 1.257l-1.505 4.88a1.766 1.766 0 0 1-1.692 1.232h-5.05c-1.187 0-2.037-1.124-1.693-2.24l.013.005ZM28.37 25.058h7.628l-3.563-10.123c-.158-.451-.812-.438-.953.017L28.37 25.054v.004Zm23.715 13.828V1.77c0-.956.79-1.738 1.769-1.738h32.545c8.06 0 15.004 6.476 15.05 14.393.03 5.46-3.035 10.23-7.567 12.72l7.078 10.791c.757 1.154-.085 2.678-1.483 2.678h-5.748c-.6 0-1.161-.3-1.484-.793l-7.109-10.833H62.221c-.974 0-1.769.777-1.769 1.738v8.159c0 .957-.79 1.738-1.768 1.738H53.85c-.974 0-1.77-.777-1.77-1.738h.005Zm8.367-18.115h26.266c3.818 0 6.866-3.325 6.3-7.181-.454-3.108-3.324-5.33-6.525-5.33h-26.04V20.77ZM0 82.743V45.236c0-.96.79-1.738 1.769-1.738h34.165c11.708 0 21.193 9.53 20.84 21.11-.335 11.146-9.94 19.869-21.287 19.869H1.77C.79 84.477 0 83.7 0 82.739v.004Zm8.201-6.325h27.422c6.85 0 12.691-5.222 12.95-11.952.273-7.073-5.501-12.91-12.64-12.91H8.202v24.862Zm25.696 19.18h65.75c.978 0 1.768-.777 1.768-1.738v-4.75c0-.96-.79-1.738-1.768-1.738H27.303c-.973 0-1.768.777-1.768 1.738v37.148c0 .961.79 1.738 1.768 1.738h72.344c.978 0 1.768-.777 1.768-1.738v-4.75c0-.961-.79-1.738-1.768-1.738H33.9v-7.967h65.117c.977 0 1.768-.777 1.768-1.738v-4.75c0-.961-.79-1.738-1.769-1.738H33.903v-7.992l-.005.013Z" fill="#ff3f52"></path></svg>
+              </a>
+            </div>
+          </div>
+          
+          <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-7 d-none d-lg-block">
+            <nav class="navbar navbar-expand-lg">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Mobiliário</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Iluminação</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Decoração</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Jardim</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Eletrodomésticos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Sobre nós</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+          
+          <div class="col-sm-2 col-lg-4 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
+           
+            <ul class="d-flex justify-content-end list-unstyled m-0">
+              <li>
+                <a href="#" class="rounded-circle bg-light p-2 mx-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="rounded-circle bg-light p-2 mx-1">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="rounded-circle bg-light p-2 mx-1">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>
+                </a>
+              </li>
+              <li class="d-lg-none">
+                <a href="#" class="rounded-circle bg-light p-2 mx-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                  <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#cart"></use></svg>
+                </a>
+              </li>
+              
+            </ul>
+
+            <div class="cart text-end d-none d-lg-block dropdown">
+              <button class="border-0 bg-transparent d-flex flex-column gap-2 lh-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
+                <span class="fs-6 text-muted dropdown-toggle">Carrinho</span>
+                <span class="cart-total fs-5 fw-bold">541.97€</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </header>
+    
+    
+    <footer class="py-5" style="background-color: lightsteelblue; position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    ">
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="footer-menu">
+              <a href="index.html">
+                <svg width="64" height="64" class="header__logoLinkSvg" viewBox="0 0 130 130" fill="currentColor" preserveAspectRatio="xMinYMin meet"><path d="M127.987 45.232v60.021c0 6.558-5.527 11.877-12.244 11.693-6.484-.18-11.56-5.582-11.56-11.957V45.232c0-.957.791-1.738 1.769-1.738h4.834c.977 0 1.768.777 1.768 1.738v59.883c0 1.796 1.484 3.492 3.312 3.605 2.054.125 3.763-1.479 3.763-3.467V45.232c0-.957.791-1.738 1.768-1.738h4.834c.978 0 1.769.777 1.769 1.738h-.013ZM21.037 87.355H1.768C.79 87.355 0 88.132 0 89.093v4.788c0 .957.79 1.734 1.769 1.734h5.535v30.647c0 .961.79 1.738 1.769 1.738h4.668c.973 0 1.768-.777 1.768-1.738V95.615h5.536c.973 0 1.769-.777 1.769-1.738v-4.788c0-.96-.791-1.738-1.77-1.738l-.008.004Zm80.893-23.37c0 11.56-9.57 20.96-21.33 20.96h-.28c-11.76 0-21.33-9.404-21.33-20.96 0-11.555 9.57-20.96 21.33-20.96h.28c11.764 0 21.33 9.405 21.33 20.96Zm-8.214 0c0-7.102-5.884-12.888-13.116-12.888h-.29c-7.227 0-13.11 5.782-13.11 12.888 0 7.107 5.88 12.884 13.11 12.884h.29c7.228 0 13.116-5.777 13.116-12.884Zm32.503 55.789h-20.272c-.977 0-1.768.777-1.768 1.738v4.75c0 .961.791 1.738 1.768 1.738h20.272c.977 0 1.768-.777 1.768-1.738v-4.75c0-.961-.791-1.738-1.768-1.738ZM1.769 40.62h9.625c.974 0 1.769-.777 1.769-1.738v-4.75c0-.957-.791-1.738-1.769-1.738H8.367V1.738C8.367.777 7.577 0 6.598 0h-4.83C.792 0 0 .777 0 1.738v37.148c0 .957.79 1.738 1.769 1.738v-.004ZM112.546 8.222h13.673c.977 0 1.768-.777 1.768-1.738V1.738c0-.961-.791-1.738-1.768-1.738h-20.272c-.977 0-1.768.777-1.768 1.738v37.148c0 .957.791 1.738 1.768 1.738h20.272c.977 0 1.768-.777 1.768-1.738v-4.75c0-.957-.791-1.738-1.768-1.738h-13.673V24.43h13.018c.978 0 1.769-.777 1.769-1.738v-4.75c0-.957-.791-1.738-1.769-1.738h-13.018V8.222ZM15.514 38.41 26.959 1.257A1.798 1.798 0 0 1 28.685 0h6.084a1.76 1.76 0 0 1 1.67 1.17L49.51 38.3c.404 1.149-.464 2.348-1.705 2.348H42.74a1.765 1.765 0 0 1-1.67-1.17l-1.765-5.013a1.798 1.798 0 0 0-1.705-1.19H27.167c-.795 0-1.496.509-1.726 1.257l-1.505 4.88a1.766 1.766 0 0 1-1.692 1.232h-5.05c-1.187 0-2.037-1.124-1.693-2.24l.013.005ZM28.37 25.058h7.628l-3.563-10.123c-.158-.451-.812-.438-.953.017L28.37 25.054v.004Zm23.715 13.828V1.77c0-.956.79-1.738 1.769-1.738h32.545c8.06 0 15.004 6.476 15.05 14.393.03 5.46-3.035 10.23-7.567 12.72l7.078 10.791c.757 1.154-.085 2.678-1.483 2.678h-5.748c-.6 0-1.161-.3-1.484-.793l-7.109-10.833H62.221c-.974 0-1.769.777-1.769 1.738v8.159c0 .957-.79 1.738-1.768 1.738H53.85c-.974 0-1.77-.777-1.77-1.738h.005Zm8.367-18.115h26.266c3.818 0 6.866-3.325 6.3-7.181-.454-3.108-3.324-5.33-6.525-5.33h-26.04V20.77ZM0 82.743V45.236c0-.96.79-1.738 1.769-1.738h34.165c11.708 0 21.193 9.53 20.84 21.11-.335 11.146-9.94 19.869-21.287 19.869H1.77C.79 84.477 0 83.7 0 82.739v.004Zm8.201-6.325h27.422c6.85 0 12.691-5.222 12.95-11.952.273-7.073-5.501-12.91-12.64-12.91H8.202v24.862Zm25.696 19.18h65.75c.978 0 1.768-.777 1.768-1.738v-4.75c0-.96-.79-1.738-1.768-1.738H27.303c-.973 0-1.768.777-1.768 1.738v37.148c0 .961.79 1.738 1.768 1.738h72.344c.978 0 1.768-.777 1.768-1.738v-4.75c0-.961-.79-1.738-1.768-1.738H33.9v-7.967h65.117c.977 0 1.768-.777 1.768-1.738v-4.75c0-.961-.79-1.738-1.769-1.738H33.903v-7.992l-.005.013Z" fill="#ff3f52"></path></svg>
+              </a>
+              <div class="social-links mt-5">
+                <ul class="d-flex list-unstyled gap-2">
+                  <li>
+                    <a href="#" class="btn btn-outline-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M22.991 3.95a1 1 0 0 0-1.51-.86a7.48 7.48 0 0 1-1.874.794a5.152 5.152 0 0 0-3.374-1.242a5.232 5.232 0 0 0-5.223 5.063a11.032 11.032 0 0 1-6.814-3.924a1.012 1.012 0 0 0-.857-.365a.999.999 0 0 0-.785.5a5.276 5.276 0 0 0-.242 4.769l-.002.001a1.041 1.041 0 0 0-.496.89a3.042 3.042 0 0 0 .027.439a5.185 5.185 0 0 0 1.568 3.312a.998.998 0 0 0-.066.77a5.204 5.204 0 0 0 2.362 2.922a7.465 7.465 0 0 1-3.59.448A1 1 0 0 0 1.45 19.3a12.942 12.942 0 0 0 7.01 2.061a12.788 12.788 0 0 0 12.465-9.363a12.822 12.822 0 0 0 .535-3.646l-.001-.2a5.77 5.77 0 0 0 1.532-4.202Zm-3.306 3.212a.995.995 0 0 0-.234.702c.01.165.009.331.009.488a10.824 10.824 0 0 1-.454 3.08a10.685 10.685 0 0 1-10.546 7.93a10.938 10.938 0 0 1-2.55-.301a9.48 9.48 0 0 0 2.942-1.564a1 1 0 0 0-.602-1.786a3.208 3.208 0 0 1-2.214-.935q.224-.042.445-.105a1 1 0 0 0-.08-1.943a3.198 3.198 0 0 1-2.25-1.726a5.3 5.3 0 0 0 .545.046a1.02 1.02 0 0 0 .984-.696a1 1 0 0 0-.4-1.137a3.196 3.196 0 0 1-1.425-2.673c0-.066.002-.133.006-.198a13.014 13.014 0 0 0 8.21 3.48a1.02 1.02 0 0 0 .817-.36a1 1 0 0 0 .206-.867a3.157 3.157 0 0 1-.087-.729a3.23 3.23 0 0 1 3.226-3.226a3.184 3.184 0 0 1 2.345 1.02a.993.993 0 0 0 .921.298a9.27 9.27 0 0 0 1.212-.322a6.681 6.681 0 0 1-1.026 1.524Z"/></svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="btn btn-outline-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.799 8.207 11.387.6.111.793-.261.793-.582 0-.286-.01-1.042-.016-2.047-3.338.725-4.042-1.61-4.042-1.61-.546-1.387-1.332-1.757-1.332-1.757-1.089-.745.083-.73.083-.73 1.205.084 1.839 1.237 1.839 1.237 1.07 1.832 2.805 1.303 3.49.996.108-.774.42-1.304.763-1.604-2.665-.305-5.466-1.332-5.466-5.93 0-1.31.467-2.381 1.236-3.221-.124-.303-.536-1.527.117-3.183 0 0 1.008-.322 3.3 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.553 3.296-1.23 3.296-1.23.655 1.656.243 2.88.12 3.183.77.84 1.235 1.911 1.235 3.221 0 4.61-2.805 5.621-5.476 5.918.431.372.817 1.102.817 2.222 0 1.606-.015 2.902-.015 3.296 0 .322.19.699.8.58C20.565 21.795 24 17.3 24 12 24 5.37 18.63 0 12 0z"/></svg>
+                    </a>
+                  </li>                  
+                  <li>
+                    <a href="#" class="btn btn-outline-light">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-3.358-4-3.105-4 0v5.604h-3v-10h3v1.568c1.396-2.586 7-2.777 7 2.476v5.956z"/></svg>
+                    </a>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-2 col-sm-6">
+            <div class="footer-menu">
+              <h5 class="widget-title" style="color: black;"><strong>Categorias</strong></h5>
+              <ul class="menu-list list-unstyled">
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Mobiliário</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Decoração</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Iluminação</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="footer-menu">
+              <h5 class="widget-title"  style="color: black;"><strong>Serviços LaRedoute</strong></h5>
+              <ul class="menu-list list-unstyled">
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Sobre nós</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Guia dos tamanhos</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Trocas & Devoluções</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Desinscrição de Newsletter</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Todos os Serviços</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="footer-menu">
+              <h5 class="widget-title">Marcas Exclusivas</h5>
+              <ul class="menu-list list-unstyled">
+                <li class="menu-item">
+                  <a href="#" class="nav-link">La Redoute Collections</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">La Redoute Intérieurs</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">AM.PM.</a>
+                </li>
+                               
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="footer-menu">
+              <h5 class="widget-title">Laredoute</h5>
+              <ul class="menu-list list-unstyled">
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Aplicação mobile La Redoute</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Blog Magazine tendências</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Vídeos La Redoute</a>
+                </li>
+                <li class="menu-item">
+                  <a href="#" class="nav-link">Espaço B2B</a>
+                </li>
+                
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+    <div id="footer-bottom" style="background-color: lightsteelblue; position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 copyright">
+            <p>© 2024/25 Tiago Amaro & Rafael Coelho. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 credit-link text-start text-md-end">
+            <p><strong>Projeto SGI 2024/25</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
