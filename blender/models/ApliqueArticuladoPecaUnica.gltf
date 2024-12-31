@@ -18,8 +18,8 @@
 			"name":"Abajur",
 			"translation":[
 				0,
-				-0.4420807957649231,
-				0.17395079135894775
+				-0.4420807361602783,
+				0.1739511340856552
 			]
 		},
 		{
@@ -28,7 +28,7 @@
 			"translation":[
 				0,
 				-0.5121386051177979,
-				0.17395049333572388
+				0.1739511340856552
 			]
 		},
 		{
@@ -38,12 +38,12 @@
 				-1,
 				0,
 				0,
-				3.9860609035713424e-07
+				4.0133929246621847e-07
 			],
 			"translation":[
 				0,
 				-0.5575374960899353,
-				0.17395079135894775
+				0.1739511340856552
 			]
 		},
 		{
@@ -54,16 +54,10 @@
 			],
 			"mesh":3,
 			"name":"AbajurJoint",
-			"rotation":[
-				0,
-				0,
-				0.08968698978424072,
-				0.9959700107574463
-			],
 			"translation":[
 				0,
 				0,
-				0.245498925447464
+				0.2455000877380371
 			]
 		},
 		{
@@ -74,8 +68,8 @@
 			"name":"ArmToAbajurJoint",
 			"translation":[
 				0,
-				-0.0017053484916687012,
-				1.5204554796218872
+				-0.0017052518669515848,
+				1.520456314086914
 			]
 		},
 		{
@@ -96,16 +90,10 @@
 			],
 			"mesh":6,
 			"name":"LongArm",
-			"rotation":[
-				0.09390803426504135,
-				0,
-				0,
-				0.9955809116363525
-			],
 			"translation":[
-				0.3245525360107422,
+				0.07031480967998505,
 				0,
-				-0.2113712728023529
+				0
 			]
 		},
 		{
@@ -116,8 +104,8 @@
 			"name":"CircleJoint",
 			"translation":[
 				0,
-				0.09073669463396072,
-				0.34315937757492065
+				0.09073670208454132,
+				0.34315940737724304
 			]
 		},
 		{
@@ -125,13 +113,7 @@
 				7
 			],
 			"mesh":8,
-			"name":"SupportJoint",
-			"rotation":[
-				0,
-				0.2051793932914734,
-				0,
-				0.9787244200706482
-			]
+			"name":"SupportJoint"
 		},
 		{
 			"children":[
@@ -150,7 +132,13 @@
 				9
 			],
 			"mesh":10,
-			"name":"Support"
+			"name":"Support",
+			"rotation":[
+				-0.6505682468414307,
+				-0.2770576775074005,
+				-0.2770576775074005,
+				0.6505682468414307
+			]
 		}
 	],
 	"animations":[
@@ -164,7 +152,7 @@
 					}
 				}
 			],
-			"name":"SupJointMidToLeft",
+			"name":"SupJoinAction",
 			"samplers":[
 				{
 					"input":56,
@@ -183,12 +171,31 @@
 					}
 				}
 			],
-			"name":"LongArmBottomToMid",
+			"name":"LongArmAction",
 			"samplers":[
 				{
-					"input":56,
+					"input":58,
 					"interpolation":"LINEAR",
-					"output":58
+					"output":59
+				}
+			]
+		},
+		{
+			"channels":[
+				{
+					"sampler":0,
+					"target":{
+						"node":5,
+						"path":"rotation"
+					}
+				}
+			],
+			"name":"ShortArmAction",
+			"samplers":[
+				{
+					"input":60,
+					"interpolation":"LINEAR",
+					"output":61
 				}
 			]
 		},
@@ -202,12 +209,31 @@
 					}
 				}
 			],
-			"name":"ArmToAbajurMidToBottom",
+			"name":"ArmToAbajurJointAction",
 			"samplers":[
 				{
-					"input":56,
+					"input":62,
 					"interpolation":"LINEAR",
-					"output":59
+					"output":63
+				}
+			]
+		},
+		{
+			"channels":[
+				{
+					"sampler":0,
+					"target":{
+						"node":3,
+						"path":"rotation"
+					}
+				}
+			],
+			"name":"AbajurJointAction",
+			"samplers":[
+				{
+					"input":64,
+					"interpolation":"LINEAR",
+					"output":65
 				}
 			]
 		}
@@ -946,9 +972,9 @@
 		{
 			"bufferView":56,
 			"componentType":5126,
-			"count":51,
+			"count":161,
 			"max":[
-				2.0833333333333335
+				6.666666666666667
 			],
 			"min":[
 				0
@@ -958,19 +984,79 @@
 		{
 			"bufferView":57,
 			"componentType":5126,
-			"count":51,
+			"count":161,
 			"type":"VEC4"
 		},
 		{
 			"bufferView":58,
 			"componentType":5126,
-			"count":51,
-			"type":"VEC4"
+			"count":161,
+			"max":[
+				15
+			],
+			"min":[
+				8.333333333333334
+			],
+			"type":"SCALAR"
 		},
 		{
 			"bufferView":59,
 			"componentType":5126,
-			"count":51,
+			"count":161,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":60,
+			"componentType":5126,
+			"count":161,
+			"max":[
+				23.333333333333332
+			],
+			"min":[
+				16.666666666666668
+			],
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":61,
+			"componentType":5126,
+			"count":161,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":62,
+			"componentType":5126,
+			"count":161,
+			"max":[
+				30
+			],
+			"min":[
+				23.333333333333332
+			],
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":63,
+			"componentType":5126,
+			"count":161,
+			"type":"VEC4"
+		},
+		{
+			"bufferView":64,
+			"componentType":5126,
+			"count":161,
+			"max":[
+				36.666666666666664
+			],
+			"min":[
+				30
+			],
+			"type":"SCALAR"
+		},
+		{
+			"bufferView":65,
+			"componentType":5126,
+			"count":161,
 			"type":"VEC4"
 		}
 	],
@@ -1313,28 +1399,58 @@
 		},
 		{
 			"buffer":0,
-			"byteLength":204,
+			"byteLength":644,
 			"byteOffset":130408
 		},
 		{
 			"buffer":0,
-			"byteLength":816,
-			"byteOffset":130612
+			"byteLength":2576,
+			"byteOffset":131052
 		},
 		{
 			"buffer":0,
-			"byteLength":816,
-			"byteOffset":131428
+			"byteLength":644,
+			"byteOffset":133628
 		},
 		{
 			"buffer":0,
-			"byteLength":816,
-			"byteOffset":132244
+			"byteLength":2576,
+			"byteOffset":134272
+		},
+		{
+			"buffer":0,
+			"byteLength":644,
+			"byteOffset":136848
+		},
+		{
+			"buffer":0,
+			"byteLength":2576,
+			"byteOffset":137492
+		},
+		{
+			"buffer":0,
+			"byteLength":644,
+			"byteOffset":140068
+		},
+		{
+			"buffer":0,
+			"byteLength":2576,
+			"byteOffset":140712
+		},
+		{
+			"buffer":0,
+			"byteLength":644,
+			"byteOffset":143288
+		},
+		{
+			"buffer":0,
+			"byteLength":2576,
+			"byteOffset":143932
 		}
 	],
 	"buffers":[
 		{
-			"byteLength":133060,
+			"byteLength":146508,
 			"uri":"ApliqueArticuladoPecaUnica.bin"
 		}
 	]

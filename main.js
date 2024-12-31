@@ -35,9 +35,11 @@ new OrbitControls(camera, renderer.domElement)
 //Animações do gltf
 let relogio = new THREE.Clock();
 let misturador = new THREE.AnimationMixer(cena)
-let acaoLocY
-let acaoLocZ
-let acaoRotZ
+let acaoLocSupJointRot
+let acaoLongArmAction
+let acaoShortArmAction
+let acaoArmToAbajurJointAction
+let acaoAbajurJointAction
 
 
 
@@ -62,24 +64,36 @@ loader.load(
         });
 
         
-        //Animação LocY
-        let clipeLocY = THREE.AnimationClip.findByName( gltf.animations, 'SupJointMidToLeft' )
-        acaoLocY = misturador.clipAction( clipeLocY )
-        acaoLocY.play()
+        //Animação SupportJoint
+        let SupJoinAction = THREE.AnimationClip.findByName( gltf.animations, 'SupJoinAction' )
+        acaoLocSupJointRot = misturador.clipAction( SupJoinAction )
+        acaoLocSupJointRot.play()
         misturador.update( relogio.getDelta() )
 
 
-        //Animação LocZ
-        let clipeLocZ = THREE.AnimationClip.findByName( gltf.animations, 'LongArmBottomToMid' )
-        acaoLocZ = misturador.clipAction( clipeLocZ )
-        acaoLocZ.play()
+        //Animação LongArm
+        let LongArmAction = THREE.AnimationClip.findByName( gltf.animations, 'LongArmAction' )
+        acaoLongArmAction = misturador.clipAction( LongArmAction )
+        acaoLongArmAction.play()
         misturador.update( relogio.getDelta() )
 
 
-        //Animação RotZ
-        let clipeRotZ = THREE.AnimationClip.findByName( gltf.animations, 'ArmToAbajurMidToBottom' )
-        acaoRotZ = misturador.clipAction( clipeRotZ )
-        acaoRotZ.play()
+        //Animação ShortArm
+        let ShortArmAction = THREE.AnimationClip.findByName( gltf.animations, 'ShortArmAction' )
+        acaoShortArmAction = misturador.clipAction( ShortArmAction )
+        acaoShortArmAction.play()
+        misturador.update( relogio.getDelta() )
+
+        //Animação ArmToAbajurJoint
+        let ArmToAbajurJointAction = THREE.AnimationClip.findByName( gltf.animations, 'ArmToAbajurJointAction' )
+        acaoArmToAbajurJointAction = misturador.clipAction( ArmToAbajurJointAction )
+        acaoArmToAbajurJointAction.play()
+        misturador.update( relogio.getDelta() )
+
+        //Animação AbajurJointAction
+        let AbajurJointAction = THREE.AnimationClip.findByName( gltf.animations, 'AbajurJointAction' )
+        acaoAbajurJointAction = misturador.clipAction( AbajurJointAction )
+        acaoAbajurJointAction.play()
         misturador.update( relogio.getDelta() )
 
 
@@ -133,73 +147,97 @@ window.cena = cena;
 let btnPlay = document.getElementById("btn_play")
 btnPlay.onclick = function(){
    if(isPaused){
-        acaoLocY.paused = false
-        acaoLocZ.paused = false
-        acaoRotZ.paused = false
+        acaoLocSupJointRot.paused = false
+        acaoLongArmAction.paused = false
+        acaoShortArmAction.paused = false
+        acaoArmToAbajurJointAction.paused = false
+        acaoAbajurJointAction.paused = false
         isPaused = false;
    }else{
-        acaoLocY.play();
-        acaoLocZ.play();
-        acaoRotZ.play();
+        acaoLocSupJointRot.play();
+        acaoLongArmAction.play();
+        acaoShortArmAction.play();
+        acaoArmToAbajurJointAction.play();
+        acaoAbajurJointAction.play();
    }
 }
 
 let btnPause = document.getElementById("btn_pause")
 btnPause.onclick = function(){
-    acaoLocY.paused = true
-    acaoLocZ.paused = true
-    acaoRotZ.paused = true
+    acaoLocSupJointRot.paused = true
+    acaoLongArmAction.paused = true
+    acaoShortArmAction.paused = true
+    acaoArmToAbajurJointAction.paused = true
+    acaoAbajurJointAction.paused = true
     isPaused = true
 }
 
 let btnStop = document.getElementById("btn_stop")
 btnStop.onclick = function(){
     
-    acaoLocY.stop();
-    acaoLocZ.stop();
-    acaoRotZ.stop();
+    acaoLocSupJointRot.stop();
+    acaoLongArmAction.stop();
+    acaoShortArmAction.stop();
+    acaoArmToAbajurJointAction.stop();
+    acaoAbajurJointAction.stop();
 }
 
 let btnReverse = document.getElementById("btn_reverse")
 btnReverse.onclick = function(){
-    acaoLocY.timeScale = -acaoLocY.timeScale
-    acaoLocZ.timeScale = -acaoLocZ.timeScale
-    acaoRotZ.timeScale = -acaoRotZ.timeScale
+    acaoLocSupJointRot.timeScale = -acaoLocSupJointRot.timeScale
+    acaoLongArmAction.timeScale = -acaoLongArmAction.timeScale
+    acaoShortArmAction.timeScale = -acaoShortArmAction.timeScale
+    acaoArmToAbajurJointAction.timeScale = -acaoArmToAbajurJointAction.timeScale
+    acaoAbajurJointAction.timeScale = -acaoAbajurJointAction.timeScale
 }
 
 let menu = document.getElementById("menu_loop")
 menu.onchange = function(){
     switch(this.value){
         case '1':
-            acaoLocY.reset();
-            acaoLocZ.reset();
-            acaoRotZ.reset();
+            acaoLocSupJointRot.reset();
+            acaoLongArmAction.reset();
+            acaoShortArmAction.reset();
+            acaoArmToAbajurJointAction.reset();
+            acaoAbajurJointAction.reset();
             
-            acaoLocY.setLoop(THREE.LoopOnce);
-            acaoLocY.clampWhenFinished = true;
-            acaoLocZ.setLoop(THREE.LoopOnce);
-            acaoLocZ.clampWhenFinished = true;
-            acaoRotZ.setLoop(THREE.LoopOnce);
-            acaoRotZ.clampWhenFinished = true;
+            acaoLocSupJointRot.setLoop(THREE.LoopOnce);
+            acaoLocSupJointRot.clampWhenFinished = true;
+            acaoLongArmAction.setLoop(THREE.LoopOnce);
+            acaoLongArmAction.clampWhenFinished = true;
+            acaoShortArmAction.setLoop(THREE.LoopOnce);
+            acaoShortArmAction.clampWhenFinished = true;
+            acaoArmToAbajurJointAction.setLoop(THREE.LoopOnce);
+            acaoArmToAbajurJointAction.clampWhenFinished = true;
+            acaoAbajurJointAction.setLoop(THREE.LoopOnce);
+            acaoAbajurJointAction.clampWhenFinished = true;
             
             break;
         case '3':
-            acaoLocY.reset();
-            acaoLocZ.reset();
-            acaoRotZ.reset();
+            acaoLocSupJointRot.reset();
+            acaoLongArmAction.reset();
+            acaoShortArmAction.reset();
+            acaoArmToAbajurJointAction.reset();
+            acaoAbajurJointAction.reset();
 
-            acaoLocY.setLoop(THREE.LoopPingPong);
-            acaoLocZ.setLoop(THREE.LoopPingPong);
-            acaoRotZ.setLoop(THREE.LoopPingPong);
+            acaoLocSupJointRot.setLoop(THREE.LoopPingPong);
+            acaoLongArmAction.setLoop(THREE.LoopPingPong);
+            acaoShortArmAction.setLoop(THREE.LoopPingPong);
+            acaoArmToAbajurJointAction.setLoop(THREE.LoopPingPong);
+            acaoAbajurJointAction.setLoop(THREE.LoopPingPong);
             break;
         default:
-            acaoLocY.reset();
-            acaoLocZ.reset();
-            acaoRotZ.reset();
+            acaoLocSupJointRot.reset();
+            acaoLongArmAction.reset();
+            acaoShortArmAction.reset();
+            acaoArmToAbajurJointAction.reset();
+            acaoAbajurJointAction.reset();
 
-            acaoLocY.setLoop(THREE.LoopRepeat);
-            acaoLocZ.setLoop(THREE.LoopRepeat);
-            acaoRotZ.setLoop(THREE.LoopRepeat);
+            acaoLocSupJointRot.setLoop(THREE.LoopPingPong);
+            acaoLongArmAction.setLoop(THREE.LoopPingPong);
+            acaoShortArmAction.setLoop(THREE.LoopPingPong);
+            acaoArmToAbajurJointAction.setLoop(THREE.LoopPingPong);
+            acaoAbajurJointAction.setLoop(THREE.LoopPingPong);
 
     }
 }
