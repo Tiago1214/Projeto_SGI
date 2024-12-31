@@ -66,7 +66,7 @@ loader.load(
             obj.castShadow = true;
             obj.receiveShadow = true;
         });
-
+        
         
         //Animação SupportJoint
         let SupJoinAction = THREE.AnimationClip.findByName( gltf.animations, 'SupJoinAction' )
@@ -139,11 +139,11 @@ function animar(){
     delta = delta%latencia_minima;
 
 }
-
+const material = new THREE.MeshStandardMaterial({ color: 0x000000 });
+cena.material.abujar.Color.Set(0x000000)
 animar();
 
 window.cena = cena;
-
 
 
 //BOTOES - Controlo Interativo
