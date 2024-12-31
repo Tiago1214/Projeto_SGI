@@ -48,19 +48,23 @@ let acaoAbajurJointAction
 
 //improtar modelo
 let loader = new GLTFLoader();
+let alvo = null
 loader.load(
     "./blender/models/ApliqueArticuladoPecaUnica.gltf",
     function(gltf){
         cena.add(gltf.scene);
+        
+        cena.traverse(function(obj) {            
+            if (obj.name == "Abajur") {
+                alvo = obj;
+            }
 
-        cena.traverse( function(obj){
             if (!obj.isMesh) {
-                return                
+                return;
             }
 
             obj.castShadow = true;
             obj.receiveShadow = true;
-
         });
 
         
@@ -190,54 +194,75 @@ btnReverse.onclick = function(){
     acaoArmToAbajurJointAction.timeScale = -acaoArmToAbajurJointAction.timeScale
     acaoAbajurJointAction.timeScale = -acaoAbajurJointAction.timeScale
 }
+//COLORS
+let currentColor = new THREE.Color("black");
+let btn_red = document.getElementById("btn_red")
+let color = new THREE.Color("red");
+btn_red.onclick = function(){
+    alvo.children[0].material.color.set(color); 
+    currentColor = color;
+}
+let btn_blue = document.getElementById("btn_blue")
+let color2 = new THREE.Color("lightblue");
+btn_blue.onclick = function(){
+    alvo.children[0].material.color.set(color2); 
+    currentColor = color2;
+}
+let btn_grey = document.getElementById("btn_grey")
+let color3 = new THREE.Color("grey");
+btn_grey.onclick = function(){
+    alvo.children[0].material.color.set(color3); 
+    currentColor = color3;
+}
+let btn_black = document.getElementById("btn_black")
+let color4 = new THREE.Color("black");
+btn_black.onclick = function(){
+    alvo.children[0].material.color.set(color4); 
+    currentColor = color4;
+}
 
-let menu = document.getElementById("menu_loop")
+
+//MATERIALS
+
+let plasticMaterial = new THREE.MeshPhysicalMaterial({
+    roughness: 0.3,
+    metalness: 0.2,
+    clearcoat: 0.5,
+    clearcoatRoughness: 0.1,
+});
+let glassMaterial = new THREE.MeshPhysicalMaterial({
+    roughness: 0,
+    metalness: 0,
+    opacity: 0.5,
+    transparent: true,
+    transmission: 0.9,
+});
+let matalicMaterial = new THREE.MeshPhysicalMaterial({
+    roughness: 0.5,
+    metalness: 1,
+    clearcoat: 0.8,
+    clearcoatRoughness: 0.1,
+});
+let menu = document.getElementById("btn_material")
 menu.onchange = function(){
     switch(this.value){
         case '1':
-            acaoLocSupJointRot.reset();
-            acaoLongArmAction.reset();
-            acaoShortArmAction.reset();
-            acaoArmToAbajurJointAction.reset();
-            acaoAbajurJointAction.reset();
+            alvo.children[0].material = plasticMaterial;
+            alvo.children[0].material.color.set(currentColor);
             
-            acaoLocSupJointRot.setLoop(THREE.LoopOnce);
-            acaoLocSupJointRot.clampWhenFinished = true;
-            acaoLongArmAction.setLoop(THREE.LoopOnce);
-            acaoLongArmAction.clampWhenFinished = true;
-            acaoShortArmAction.setLoop(THREE.LoopOnce);
-            acaoShortArmAction.clampWhenFinished = true;
-            acaoArmToAbajurJointAction.setLoop(THREE.LoopOnce);
-            acaoArmToAbajurJointAction.clampWhenFinished = true;
-            acaoAbajurJointAction.setLoop(THREE.LoopOnce);
-            acaoAbajurJointAction.clampWhenFinished = true;
-            
+            break;
+        case '2':
+            alvo.children[0].material = matalicMaterial;
+            alvo.children[0].material.color.set(currentColor);
             break;
         case '3':
-            acaoLocSupJointRot.reset();
-            acaoLongArmAction.reset();
-            acaoShortArmAction.reset();
-            acaoArmToAbajurJointAction.reset();
-            acaoAbajurJointAction.reset();
-
-            acaoLocSupJointRot.setLoop(THREE.LoopPingPong);
-            acaoLongArmAction.setLoop(THREE.LoopPingPong);
-            acaoShortArmAction.setLoop(THREE.LoopPingPong);
-            acaoArmToAbajurJointAction.setLoop(THREE.LoopPingPong);
-            acaoAbajurJointAction.setLoop(THREE.LoopPingPong);
+            alvo.children[0].material = glassMaterial;
+            alvo.children[0].material.color.set(currentColor);
             break;
-        default:
-            acaoLocSupJointRot.reset();
-            acaoLongArmAction.reset();
-            acaoShortArmAction.reset();
-            acaoArmToAbajurJointAction.reset();
-            acaoAbajurJointAction.reset();
-
-            acaoLocSupJointRot.setLoop(THREE.LoopPingPong);
-            acaoLongArmAction.setLoop(THREE.LoopPingPong);
-            acaoShortArmAction.setLoop(THREE.LoopPingPong);
-            acaoArmToAbajurJointAction.setLoop(THREE.LoopPingPong);
-            acaoAbajurJointAction.setLoop(THREE.LoopPingPong);
-
+        
     }
 }
+
+
+
+
