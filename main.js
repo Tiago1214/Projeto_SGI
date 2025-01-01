@@ -12,7 +12,6 @@ let isOff = true;
 //Criar cena
 let cena = new THREE.Scene();
 
-
 //Criar e configurar o renderer
 let targetCanvas = document.getElementById("meuCanvas");
 let renderer = new THREE.WebGLRenderer({ canvas : targetCanvas});
@@ -21,7 +20,7 @@ renderer.shadowMap.enabled = true;
 
 //camera na posição inicial (6,4,7)
 let camera = new THREE.PerspectiveCamera(75, largura_Canvas/altura_Canvas, 0.1, 800);
-camera.lookAt(0,0,0);
+camera.lookAt(0,-1,2.5);
 camera.position.set(10,6,7);
 
 // Orbits
@@ -50,6 +49,7 @@ let acaoAbajurJointAction
 //improtar modelo
 let loader = new GLTFLoader();
 let alvo = null
+let light = null
 loader.load(
     "./blender/models/ApliqueArticuladoPecaUnica.gltf",
     function(gltf){
@@ -59,7 +59,7 @@ loader.load(
             if (obj.name == "Abajur") {
                 alvo = obj;
             }
-
+            
             if (!obj.isMesh) {
                 return;
             }
@@ -112,7 +112,7 @@ loader.load(
 //ponto de luz
 const luzPonto = new THREE.PointLight( "white", 100 );
 luzPonto.position.set( 5,4,5);
-luzPonto.castShadow = true;
+luzPonto.castShadow = false;
 cena.add( luzPonto ) 
 cena.background = new THREE.Color(0xD3D3D3); 
 
@@ -156,7 +156,6 @@ btnLight.onclick = function(){
         luzPonto.intensity = 1;
         btnLight.innerText="Desligar Luz"
         btnLight.style.backgroundColor = "#FF0000";
-        
     }
     else{
         isOff=true;
@@ -212,14 +211,7 @@ btnStop.onclick = function(){
     acaoAbajurJointAction.stop();
 }
 
-let btnReverse = document.getElementById("btn_reverse")
-btnReverse.onclick = function(){
-    acaoLocSupJointRot.timeScale = -acaoLocSupJointRot.timeScale
-    acaoLongArmAction.timeScale = -acaoLongArmAction.timeScale
-    acaoShortArmAction.timeScale = -acaoShortArmAction.timeScale
-    acaoArmToAbajurJointAction.timeScale = -acaoArmToAbajurJointAction.timeScale
-    acaoAbajurJointAction.timeScale = -acaoAbajurJointAction.timeScale
-}
+
 //COLORS
 let currentColor = new THREE.Color("black");
 let btn_red = document.getElementById("btn_red")
