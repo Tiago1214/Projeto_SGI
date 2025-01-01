@@ -221,70 +221,77 @@
     <!-- COMEÇO -->
     <p></p>
     <div class="container-fluid">
-      <div class="row">
-       <div class="col-md-6 col-sm-6">
-        <canvas style="border: 1px solid black;" id="meuCanvas"></canvas>
-       </div>
-        <div class="col-md-6 col-sm-6">
-          <div class="container-fluid">
-            <p><h6 style="
-              color: #333;
-              font-weight: bold;">LA REDOUTE INTERIORS</h6></p>
-            <p>
-              <h1 style="
-              color: #333;
-              font-weight: normal;
-              text-transform: uppercase;
-              margin-bottom: 10px;">
-                Candeeiro de pé
-              </h1>
-            </p>
+      <!-- Main Row with Canvas and Controls -->
+      <div class="row align-items-start">
+        <!-- Canvas Section -->
+        <div class="col-md-6 col-sm-12">
+          <canvas id="meuCanvas"  style="background-color: lightgrey; border: 1px solid black; width: 100%; height: 300px;  max-width: 100%;
+  height: auto;"></canvas>
+        </div>
+    
+        <!-- Controls Section -->
+        <div class="col-md-5 col-sm-12">
+          <div>
+            <!-- Product Info -->
+            <h6 style="color: #333; font-weight: bold;">LA REDOUTE INTERIORS</h6>
+            <h1 style="color: #333; font-weight: normal; text-transform: uppercase; margin-bottom: 10px;">
+              Candeeiro de pé
+            </h1>
+    
+            <!-- Control Buttons -->
+            <div class="mb-3">
+              <button id="btn_play" class="btn btn-success" style="background-color: #28a745; color: white;">Iniciar</button>
+              <button id="btn_pause" class="btn btn-warning" style="background-color: #ffc107; color: black;">Pausar</button>
+              <button id="btn_stop" class="btn btn-danger" style="background-color: #dc3545; color: white;">Parar</button>
+              <button id="btn_light" class="btn btn-primary" style="background-color: #007bff; color: white;">Ligar Luz</button>
+            </div>
+           
             
-            <p>
-                <button id="btn_play" class="btn btn-success">Play</button>
-                <button id="btn_pause"class="btn btn-warning">Pause</button>
-                <button id="btn_stop" class="btn btn-warning">Stop</button>
-                <button id="btn_reverse" class="btn btn-primary">Reverse</button>
-              
-            </p>
-            <p>
+    
+            <!-- Color Selection -->
+            <div class="mb-3">
               <h4>Selecione a cor do abajur:</h4>
-              
-              <button id="btn_red" class="btn-lg btn" style="background-color: red;"></button>
-              <button id="btn_blue" class="btn-lg btn" style="background-color: lightblue;"></button>
-              <button id="btn_grey" class="btn-lg btn" style="background-color: grey;"></button>
-              <button id="btn_black" class="btn-lg btn" style="background-color: black;"></button>
-            </p>
-            <p>
+              <button id="btn_red" class="btn btn-lg" style="background-color: red;"></button>
+              <button id="btn_blue" class="btn btn-lg" style="background-color: lightblue;"></button>
+              <button id="btn_grey" class="btn btn-lg" style="background-color: grey;"></button>
+              <button id="btn_black" class="btn btn-lg" style="background-color: black;"></button>
+            </div>
+    
+            <!-- Material Selection -->
+            <div class="mb-3">
               <h4>Selecione o material:</h4>
-              
               <select id="btn_material" class="form-select" aria-label="Escolha o material">
-                  <option value="0"selected>Selecione Opção</option>  
-                  <option value="1">Plastico</option>
-                  <option value="2">Metálico</option>
-                  <option value="3" >Vidro</option>
+                <option value="0" selected>Selecione Opção</option>
+                <option value="1">Plástico</option>
+                <option value="2">Metálico</option>
+                <option value="3">Vidro</option>
               </select>
-            </p>
-
-            <p>
-              <h4>99.99€ &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                <button class="btn btn-success btn-lg btn-outline-dark">Adicionar ao carrinho</button></h4>
-              
-            </p>
+            </div>
+    
+            <!-- Price and Add to Cart Button -->
+            <div>
+              <h4>
+                99.99€ 
+                <button class="btn btn-success btn-lg">Adicionar ao carrinho</button>
+              </h4>
+            </div>
           </div>
         </div>
       </div>
-      <div>
-        <h1>Descrição</h1>
-        <p>
-          Candeeiro de pé elegante e moderno, ideal para adicionar um toque
-            
-          sofisticado a qualquer ambiente. Com estrutura metálica em acabamento dourado e base estável, este candeeiro de pé apresenta um design minimalista, perfeito para salas de estar, escritórios ou quartos. A sua cúpula em tecido claro oferece uma luz suave e acolhedora, criando um ambiente confortável e acolhedor. Versátil e funcional, é ajustável em altura para se adaptar às suas necessidades. Perfeito para quem procura um equilíbrio entre estilo e praticidade, este candeeiro é a escolha ideal para transformar a sua decoração. Disponível na loja La Redoute.
-        </p>
-      </div> 
-      
+    
+      <!-- Description Section -->
+      <div class="row mt-3">
+        <div class="col-12">
+          <h1>Descrição</h1>
+          <p>
+            Candeeiro de pé elegante e moderno, ideal para adicionar um toque
+            sofisticado a qualquer ambiente. Com estrutura metálica em acabamento dourado e base estável, este candeeiro de pé apresenta um design minimalista, perfeito para salas de estar, escritórios ou quartos. A sua cúpula em tecido claro oferece uma luz suave e acolhedora, criando um ambiente confortável e acolhedor. Versátil e funcional, é ajustável em altura para se adaptar às suas necessidades. Perfeito para quem procura um equilíbrio entre estilo e praticidade, este candeeiro é a escolha ideal para transformar a sua decoração. Disponível na loja La Redoute.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    
     </div>
 
 

@@ -8,9 +8,10 @@ let largura_Canvas = 800;
 let altura_Canvas = 400;
 
 let isPaused = false;
-
+let isOff = true;
 //Criar cena
 let cena = new THREE.Scene();
+
 
 //Criar e configurar o renderer
 let targetCanvas = document.getElementById("meuCanvas");
@@ -21,7 +22,7 @@ renderer.shadowMap.enabled = true;
 //camera na posição inicial (6,4,7)
 let camera = new THREE.PerspectiveCamera(75, largura_Canvas/altura_Canvas, 0.1, 800);
 camera.lookAt(0,0,0);
-camera.position.set(10,5,10);
+camera.position.set(10,6,7);
 
 // Orbits
 new OrbitControls(camera, renderer.domElement) 
@@ -110,10 +111,11 @@ loader.load(
 //ILUMINAÇÃO
 //ponto de luz
 const luzPonto = new THREE.PointLight( "white", 100 );
-luzPonto.position.set( 5, 3, 5);
+luzPonto.position.set( 5,4,5);
 luzPonto.castShadow = true;
 cena.add( luzPonto ) 
-cena.background = new THREE.Color(0xffffff); 
+cena.background = new THREE.Color(0xD3D3D3); 
+
 
 
 const pointLightHelper = new THREE.PointLightHelper( luzPonto, 0.2 );
@@ -147,6 +149,24 @@ window.cena = cena;
 
 
 //BOTOES - Controlo Interativo
+let btnLight = document.getElementById("btn_light")
+btnLight.onclick = function(){
+    if(isOff){
+        isOff=false;
+        luzPonto.intensity = 1;
+        btnLight.innerText="Desligar Luz"
+        btnLight.style.backgroundColor = "#FF0000";
+        
+    }
+    else{
+        isOff=true;
+        luzPonto.intensity = 0;
+        btnLight.innerText="Ligar Luz"
+        btnLight.style.backgroundColor = "#007bff";
+        
+    }
+}
+
 
 let btnPlay = document.getElementById("btn_play")
 btnPlay.onclick = function(){
