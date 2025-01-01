@@ -3,12 +3,48 @@
 		"generator":"Khronos glTF Blender I/O v4.2.60",
 		"version":"2.0"
 	},
+	"extensionsUsed":[
+		"KHR_lights_punctual"
+	],
+	"extensionsRequired":[
+		"KHR_lights_punctual"
+	],
+	"extensions":{
+		"KHR_lights_punctual":{
+			"lights":[
+				{
+					"color":[
+						1,
+						1,
+						1
+					],
+					"intensity":510.9032102523278,
+					"type":"point",
+					"name":"Point"
+				},
+				{
+					"color":[
+						1,
+						1,
+						1
+					],
+					"intensity":543.5141306588226,
+					"spot":{
+						"innerConeAngle":0.44080799473801235,
+						"outerConeAngle":0.5105087757110596
+					},
+					"type":"spot",
+					"name":"Spot.002"
+				}
+			]
+		}
+	},
 	"scene":0,
 	"scenes":[
 		{
 			"name":"Scene",
 			"nodes":[
-				10
+				12
 			]
 		}
 	],
@@ -32,6 +68,25 @@
 			]
 		},
 		{
+			"extensions":{
+				"KHR_lights_punctual":{
+					"light":0
+				}
+			},
+			"name":"Point",
+			"rotation":[
+				-0.7071068286895752,
+				0,
+				0,
+				0.7071068286895752
+			],
+			"translation":[
+				0,
+				-1.3749945163726807,
+				0.17395108938217163
+			]
+		},
+		{
 			"mesh":2,
 			"name":"S_LightBulb",
 			"rotation":[
@@ -47,10 +102,31 @@
 			]
 		},
 		{
+			"extensions":{
+				"KHR_lights_punctual":{
+					"light":1
+				}
+			},
+			"name":"Spot",
+			"rotation":[
+				-0.7010574340820312,
+				-0.09229595214128494,
+				-0.09229594469070435,
+				0.7010573744773865
+			],
+			"translation":[
+				0,
+				-0.11499442160129547,
+				0.1739521026611328
+			]
+		},
+		{
 			"children":[
 				0,
 				1,
-				2
+				2,
+				3,
+				4
 			],
 			"mesh":3,
 			"name":"AbajurJoint",
@@ -62,7 +138,7 @@
 		},
 		{
 			"children":[
-				3
+				5
 			],
 			"mesh":4,
 			"name":"ArmToAbajurJoint",
@@ -74,7 +150,7 @@
 		},
 		{
 			"children":[
-				4
+				6
 			],
 			"mesh":5,
 			"name":"ShortArm",
@@ -86,7 +162,7 @@
 		},
 		{
 			"children":[
-				5
+				7
 			],
 			"mesh":6,
 			"name":"LongArm",
@@ -98,7 +174,7 @@
 		},
 		{
 			"children":[
-				6
+				8
 			],
 			"mesh":7,
 			"name":"CircleJoint",
@@ -110,14 +186,14 @@
 		},
 		{
 			"children":[
-				7
+				9
 			],
 			"mesh":8,
 			"name":"SupportJoint"
 		},
 		{
 			"children":[
-				8
+				10
 			],
 			"mesh":9,
 			"name":"SupportJointHolder",
@@ -129,7 +205,7 @@
 		},
 		{
 			"children":[
-				9
+				11
 			],
 			"mesh":10,
 			"name":"Support",
@@ -147,7 +223,7 @@
 				{
 					"sampler":0,
 					"target":{
-						"node":8,
+						"node":10,
 						"path":"rotation"
 					}
 				}
@@ -166,7 +242,7 @@
 				{
 					"sampler":0,
 					"target":{
-						"node":6,
+						"node":8,
 						"path":"rotation"
 					}
 				}
@@ -185,7 +261,7 @@
 				{
 					"sampler":0,
 					"target":{
-						"node":5,
+						"node":7,
 						"path":"rotation"
 					}
 				}
@@ -204,7 +280,7 @@
 				{
 					"sampler":0,
 					"target":{
-						"node":4,
+						"node":6,
 						"path":"rotation"
 					}
 				}
@@ -223,7 +299,7 @@
 				{
 					"sampler":0,
 					"target":{
-						"node":3,
+						"node":5,
 						"path":"rotation"
 					}
 				}

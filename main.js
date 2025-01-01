@@ -6,10 +6,15 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 //Variaveis
 let largura_Canvas = 800;
 let altura_Canvas = 400;
+let suporte   
+let lampada_cilindrica
+let lampada_esferica
+// Cor default para as luzes e cor da lampada
+const cor_default = new THREE.Color("lightblue")
 
 
 let isPaused = false;
-let isOff = true;
+let isOff = false;
 //Criar cena
 let cena = new THREE.Scene();
 
@@ -22,7 +27,7 @@ renderer.shadowMap.enabled = true;
 //camera na posição inicial (6,4,7)
 let camera = new THREE.PerspectiveCamera(75, largura_Canvas/altura_Canvas, 0.1, 800);
 camera.lookAt(0,-1,2.5);
-camera.position.set(10,6,7);
+camera.position.set(0,3,9);
 
 // Orbits
 new OrbitControls(camera, renderer.domElement) 
@@ -50,11 +55,37 @@ let acaoAbajurJointAction
 //improtar modelo
 let loader = new GLTFLoader();
 let alvo = null
-let light = null
+
+// Carregar modelo, ajustar luzes, e preparar cena exemplo
+
 loader.load(
     "./blender/models/ApliqueArticuladoPecaUnica.gltf",
     function(gltf){
+        // informacao: 1 unidade = 0.1m = 1 dm = 10 cm
+
         cena.add(gltf.scene);
+
+        suporte = cena.getObjectByName("Support")
+        console.log(suporte)
+
+        // Configurar das fontes luminosas do modelo
+        const ponto_luminoso = cena.getObjectByName("Point")
+        const cone_luminoso = cena.getObjectByName("Spot")
+        ponto_luminoso.intensity = 3
+        ponto_luminoso.distance = 1.25  // 0.125 metros
+        cone_luminoso.intensity = 16
+        cone_luminoso.distance = 10     // 1 metro; ajustar consoante o pretendido 
+        ponto_luminoso.color = cone_luminoso.color = cor_default // alterar cor da luz
+        console.log(ponto_luminoso)
+
+        // Obter os dois tipos de lampada e esconder a redonda
+        lampada_cilindrica = cena.getObjectByName("C_LightBulb")
+        lampada_esferica = cena.getObjectByName("S_LightBulb")
+        lampada_esferica.visible = false
+        
+        // Ajustar a cor da lampada visivel
+        lampada_cilindrica.children[0].material.emissive = cor_default// alterar cor da lampada
+        console.log(lampada_cilindrica)
         
         cena.traverse(function(obj) {            
             if (obj.name == "Abajur") {
@@ -69,7 +100,7 @@ loader.load(
             obj.receiveShadow = true;
         });
 
-        
+        suporte.position.y -= 5;
         //Animação SupportJoint
         let SupJoinAction = THREE.AnimationClip.findByName( gltf.animations, 'SupJoinAction' )
         acaoLocSupJointRot = misturador.clipAction( SupJoinAction )
@@ -112,30 +143,17 @@ loader.load(
 //ILUMINAÇÃO
 //ponto de luz
 const luzPonto = new THREE.PointLight( "white", 100 );
-<<<<<<< Updated upstream
-luzPonto.position.set( 5,4,5);
-luzPonto.castShadow = false;
-cena.add( luzPonto ) 
-cena.background = new THREE.Color(0xD3D3D3); 
-
-=======
 luzPonto.position.set( 5, 7, 5);
 luzPonto.castShadow = true;
 cena.add( luzPonto ) 
-
 cena.background = new THREE.Color(0xD3D3D3); 
-const luzPonto2 = new THREE.PointLight( "white", 100 );
-luzPonto2.position.set( 5, 7, -5);
-luzPonto2.castShadow = true;
-cena.add( luzPonto2 ) 
->>>>>>> Stashed changes
+
 
 
 const pointLightHelper = new THREE.PointLightHelper( luzPonto, 0.2 );
-cena.add( pointLightHelper );
+//cena.add( pointLightHelper );
 
-const pointLightHelper2 = new THREE.PointLightHelper( luzPonto2, 0.2 );
-cena.add( pointLightHelper2 );
+
 
 
 //Renderizar e animar 
@@ -167,15 +185,23 @@ window.cena = cena;
 //BOTOES - Controlo Interativo
 let btnLight = document.getElementById("btn_light")
 btnLight.onclick = function(){
+    const ponto_luminoso = cena.getObjectByName("Point");
+    const cone_luminoso = cena.getObjectByName("Spot");
     if(isOff){
         isOff=false;
-        luzPonto.intensity = 1;
+        lampada_esferica.visible = false
+        lampada_cilindrica.children[0].material.emissive = cor_default
+        ponto_luminoso.intensity = 3; // Reativar intensidade
+        cone_luminoso.intensity = 16;
         btnLight.innerText="Desligar Luz"
         btnLight.style.backgroundColor = "#FF0000";
     }
     else{
         isOff=true;
-        luzPonto.intensity = 0;
+        lampada_esferica.visible = true
+        //lampada_cilindrica.children[0].material.emissive = new THREE.Color("black");
+        ponto_luminoso.intensity = 0; // apagar luzes
+        cone_luminoso.intensity = 0;
         btnLight.innerText="Ligar Luz"
         btnLight.style.backgroundColor = "#007bff";
         
@@ -198,7 +224,7 @@ btnPlay.onclick = function(){
         acaoShortArmAction.reset();
         acaoArmToAbajurJointAction.reset();
         acaoAbajurJointAction.reset();
-        lampadaMaterial.emissive = new THREE.Color(0, 1, 1);
+
         acaoLocSupJointRot.play();
         acaoLongArmAction.play();
         acaoShortArmAction.play();
