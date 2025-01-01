@@ -71,33 +71,33 @@ loader.load(
         //Animação SupportJoint
         let SupJoinAction = THREE.AnimationClip.findByName( gltf.animations, 'SupJoinAction' )
         acaoLocSupJointRot = misturador.clipAction( SupJoinAction )
-        acaoLocSupJointRot.play()
+        acaoLocSupJointRot.setLoop(THREE.LoopOnce)
         misturador.update( relogio.getDelta() )
 
 
         //Animação LongArm
         let LongArmAction = THREE.AnimationClip.findByName( gltf.animations, 'LongArmAction' )
         acaoLongArmAction = misturador.clipAction( LongArmAction )
-        acaoLongArmAction.play()
+        acaoLongArmAction.setLoop(THREE.LoopOnce)
         misturador.update( relogio.getDelta() )
 
 
         //Animação ShortArm
         let ShortArmAction = THREE.AnimationClip.findByName( gltf.animations, 'ShortArmAction' )
         acaoShortArmAction = misturador.clipAction( ShortArmAction )
-        acaoShortArmAction.play()
+        acaoShortArmAction.setLoop(THREE.LoopOnce)
         misturador.update( relogio.getDelta() )
 
         //Animação ArmToAbajurJoint
         let ArmToAbajurJointAction = THREE.AnimationClip.findByName( gltf.animations, 'ArmToAbajurJointAction' )
         acaoArmToAbajurJointAction = misturador.clipAction( ArmToAbajurJointAction )
-        acaoArmToAbajurJointAction.play()
+        acaoArmToAbajurJointAction.setLoop(THREE.LoopOnce)
         misturador.update( relogio.getDelta() )
 
         //Animação AbajurJointAction
         let AbajurJointAction = THREE.AnimationClip.findByName( gltf.animations, 'AbajurJointAction' )
         acaoAbajurJointAction = misturador.clipAction( AbajurJointAction )
-        acaoAbajurJointAction.play()
+        acaoAbajurJointAction.setLoop(THREE.LoopOnce)
         misturador.update( relogio.getDelta() )
 
 
@@ -158,6 +158,12 @@ btnPlay.onclick = function(){
         acaoAbajurJointAction.paused = false
         isPaused = false;
    }else{
+        acaoLocSupJointRot.reset();
+        acaoLongArmAction.reset();
+        acaoShortArmAction.reset();
+        acaoArmToAbajurJointAction.reset();
+        acaoAbajurJointAction.reset();
+
         acaoLocSupJointRot.play();
         acaoLongArmAction.play();
         acaoShortArmAction.play();
