@@ -7,6 +7,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 let largura_Canvas = 800;
 let altura_Canvas = 400;
 
+
 let isPaused = false;
 let isOff = true;
 //Criar cena
@@ -111,15 +112,30 @@ loader.load(
 //ILUMINAÇÃO
 //ponto de luz
 const luzPonto = new THREE.PointLight( "white", 100 );
+<<<<<<< Updated upstream
 luzPonto.position.set( 5,4,5);
 luzPonto.castShadow = false;
 cena.add( luzPonto ) 
 cena.background = new THREE.Color(0xD3D3D3); 
 
+=======
+luzPonto.position.set( 5, 7, 5);
+luzPonto.castShadow = true;
+cena.add( luzPonto ) 
+
+cena.background = new THREE.Color(0xD3D3D3); 
+const luzPonto2 = new THREE.PointLight( "white", 100 );
+luzPonto2.position.set( 5, 7, -5);
+luzPonto2.castShadow = true;
+cena.add( luzPonto2 ) 
+>>>>>>> Stashed changes
 
 
 const pointLightHelper = new THREE.PointLightHelper( luzPonto, 0.2 );
 cena.add( pointLightHelper );
+
+const pointLightHelper2 = new THREE.PointLightHelper( luzPonto2, 0.2 );
+cena.add( pointLightHelper2 );
 
 
 //Renderizar e animar 
@@ -182,7 +198,7 @@ btnPlay.onclick = function(){
         acaoShortArmAction.reset();
         acaoArmToAbajurJointAction.reset();
         acaoAbajurJointAction.reset();
-
+        lampadaMaterial.emissive = new THREE.Color(0, 1, 1);
         acaoLocSupJointRot.play();
         acaoLongArmAction.play();
         acaoShortArmAction.play();
