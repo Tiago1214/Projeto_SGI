@@ -27,7 +27,7 @@ renderer.shadowMap.enabled = true;
 //camera na posição inicial (6,4,7)
 let camera = new THREE.PerspectiveCamera(75, largura_Canvas/altura_Canvas, 0.1, 800);
 camera.lookAt(0,-1,2.5);
-camera.position.set(0,3,9);
+camera.position.set(0,-3,12);
 
 // Orbits
 new OrbitControls(camera, renderer.domElement) 
